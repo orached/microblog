@@ -5,11 +5,6 @@ from wtforms.validators import DataRequired
 from flask_babel import _, lazy_gettext as _l
 
 
-class PostForm(FlaskForm):
-    post = TextAreaField(_l('Say something'), validators=[DataRequired()])
-    submit = SubmitField(_l('Submit'))
-
-
 class SearchForm(FlaskForm):
     q = StringField(_l('Search'), validators=[DataRequired()])
 

@@ -53,6 +53,9 @@ def create_app(config_class=Config):
     from app.users import bp as users_bp
     app.register_blueprint(users_bp)
 
+    from app.posts import bp as posts_bp
+    app.register_blueprint(posts_bp)
+
     from app.api import bp as api_bp
     app.register_blueprint(api_bp, url_prefix='/api')
 
