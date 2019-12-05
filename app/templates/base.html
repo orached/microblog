@@ -19,8 +19,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url_for('main.index') }}">{{ _('Home') }}</a></li>
+                    {% if current_user.is_authenticated %}            
+                    <li><a href="{{ url_for('posts.explore') }}">{{ _('Posts') }}</a></li>
+                    {% endif %}
                     <li><a href="{{ url_for('main.about') }}">{{ _('About') }}</a></li>
-                    <li><a href="{{ url_for('posts.explore') }}">{{ _('Explore') }}</a></li>
                 </ul>
                 {% if g.search_form %}
                 <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
