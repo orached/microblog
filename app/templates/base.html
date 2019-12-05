@@ -34,7 +34,7 @@
                     <li><a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a></li>
                     {% else %}
                     <li>
-                        <a href="{{ url_for('main.messages') }}">{{ _('Messages') }}
+                        <a href="{{ url_for('users.messages') }}">{{ _('Messages') }}
                             {% set new_messages = current_user.new_messages() %}
                             <span id="message_count" class="badge"
                                   style="visibility: {% if new_messages %}visible
@@ -43,7 +43,7 @@
                             </span>
                         </a>
                     </li>
-                    <li><a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a></li>
+                    <li><a href="{{ url_for('users.user', username=current_user.username) }}">{{ _('Profile') }}</a></li>
                     <li><a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a></li>
                     {% endif %}
                 </ul>
@@ -149,7 +149,7 @@
         $(function() {
             var since = 0;
             setInterval(function() {
-                $.ajax('{{ url_for('main.notifications') }}?since=' + since).done(
+                $.ajax('{{ url_for('users.notifications') }}?since=' + since).done(
                     function(notifications) {
                         for (var i = 0; i < notifications.length; i++) {
                             switch (notifications[i].name) {
