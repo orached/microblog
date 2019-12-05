@@ -10,7 +10,7 @@ from app.translate import translate
 from app.posts import bp
 
 
-@bp.route('/explore')
+@bp.route('/explore', methods=['GET', 'POST'])
 @login_required
 def explore():
     form = PostForm()

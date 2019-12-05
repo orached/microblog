@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
+{% block styles %}
+    {{ super() }}
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+{% endblock %}
+
 {% block app_content %}
     <h1>{{ _('Hi, %(username)s!', username=current_user.username) }}</h1>
     {% if form %}
@@ -24,4 +29,15 @@
             </li>
         </ul>
     </nav>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#post_body').summernote();
+        });
+    </script>
+    <br>
 {% endblock %}
