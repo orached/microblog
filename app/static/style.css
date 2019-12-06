@@ -19,7 +19,6 @@
 6. Skills / .skills-wrapper
 7. Work Experiance / .section-experience
 8. Education / .section-education
-9. Marketplace Profile / .section-profile
 12. Contact / .section-contact
 13. footer 
 
@@ -351,24 +350,6 @@ ul {
       }
   }
 
-/*-------------------
-* Market Place Profile
-*-------------------*/
-.profile-item{
-  margin-bottom: 30px;
-  }
-
-.profile-item .media-object{
-  width: 30px;
-  }
-
-.profile-item  a{
-  color: #444;
-  }
-
-.profile-item  a:hover{
-  color: #ff5722;
-  }
 
 /*-------------------
 * Content Item
