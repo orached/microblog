@@ -10,9 +10,9 @@ from app.translate import translate
 from app.posts import bp
 
 
-@bp.route('/explore', methods=['GET', 'POST'])
+@bp.route('/editpost', methods=['GET', 'POST'])
 @login_required
-def explore():
+def editpost():
     form = PostForm()
     if form.validate_on_submit():
         language = guess_language(form.post.data)
@@ -23,13 +23,13 @@ def explore():
         db.session.add(post)
         db.session.commit()
         flash(_('Your post is now live!'))
-        return redirect(url_for('posts.explore'))
+        return redirect(url_for('posts.editpost'))
     page = request.args.get('page', 1, type=int)
     posts = current_user.followed_posts().paginate(
         page, current_app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('posts.explore', page=posts.next_num) \
+    next_url = url_for('posts.editpost', page=posts.next_num) \
         if posts.has_next else None
-    prev_url = url_for('posts.explore', page=posts.prev_num) \
+    prev_url = url_for('posts.editpost', page=posts.prev_num) \
         if posts.has_prev else None
     return render_template('edit_post.html', title=_('Posts'), form=form,
                            posts=posts.items, next_url=next_url,
