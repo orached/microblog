@@ -18,7 +18,7 @@ def editpost():
         language = guess_language(form.post.data)
         if language == 'UNKNOWN' or len(language) > 5:
             language = ''
-        post = Post(body=form.post.data, author=current_user,
+        post = Post(title=form.title.data, body=form.post.data, author=current_user,
                     language=language)
         db.session.add(post)
         db.session.commit()
