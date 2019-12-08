@@ -10,9 +10,9 @@ from app.translate import translate
 from app.posts import bp
 
 
-@bp.route('/editpost', methods=['GET', 'POST'])
+@bp.route('/managepost', methods=['GET', 'POST'])
 @login_required
-def editpost():
+def managepost():
     form = PostForm()
     if form.validate_on_submit():
         language = guess_language(form.post.data)
@@ -23,15 +23,15 @@ def editpost():
         db.session.add(post)
         db.session.commit()
         flash(_('Your post is now live!'))
-        return redirect(url_for('posts.editpost'))
+        return redirect(url_for('posts.managepost'))
     page = request.args.get('page', 1, type=int)
-    posts = current_user.followed_posts().paginate(
+    posts = current_user.posts.order_by(Post.timestamp.desc()).paginate(
         page, current_app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('posts.editpost', page=posts.next_num) \
+    next_url = url_for('posts.managepost', page=posts.next_num) \
         if posts.has_next else None
-    prev_url = url_for('posts.editpost', page=posts.prev_num) \
+    prev_url = url_for('posts.managepost', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('edit_post.html', title=_('Posts'), form=form,
+    return render_template('manage_post.html', title=_('Posts'), form=form,
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
@@ -41,3 +41,25 @@ def translate_text():
     return jsonify({'text': translate(request.form['text'],
                                       request.form['source_language'],
                                       request.form['dest_language'])})
+
+@bp.route('/post/<title>')
+def post(title):
+    post = Post.query.filter_by(title=title).first_or_404()
+    return render_template('post.html', posts=[post])
+
+
+@bp.route('/editpost/<title>', methods=['GET', 'POST'])
+@login_required
+def editpost(title):
+    post = Post.query.filter_by(title=title).first_or_404()
+    if current_user != post.author:
+        abort(403)
+    form = PostForm()
+    if form.validate_on_submit():
+        post.body = form.post.data
+        db.session.add(post)
+        db.session.commit()
+        flash('The post has been updated.')
+        return redirect(url_for('posts.post', title=post.title))
+    form.post.data = post.body
+    return render_template('edit_post.html', form=form)
