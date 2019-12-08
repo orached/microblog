@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block page_content %}
+{% block styles %}
+    {{ super() }}
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+{% endblock %}
+
+{% block app_content %}
 <div class="page-header">
     <h1>Edit Post</h1>
 </div>

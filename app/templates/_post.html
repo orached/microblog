@@ -35,6 +35,11 @@
                             '{{ g.locale }}');">{{ _('Translate') }}</a>
             </span>
             {% endif %}
+            {% if current_user == post.author %}
+            <a href="{{ url_for('posts.editpost', id=post.id) }}">
+                <span class="label label-primary">Edit</span>
+            </a>
+            {% endif %}
         </td>
     </tr>
 </table>

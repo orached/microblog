@@ -42,24 +42,26 @@ def translate_text():
                                       request.form['source_language'],
                                       request.form['dest_language'])})
 
-@bp.route('/post/<title>')
-def post(title):
-    post = Post.query.filter_by(title=title).first_or_404()
-    return render_template('post.html', posts=[post])
+@bp.route('/post/<int:id>')
+def post(id):
+    post = Post.query.get_or_404(id)
+    return render_template('post.html', post=post)
 
 
-@bp.route('/editpost/<title>', methods=['GET', 'POST'])
+@bp.route('/editpost/<int:id>', methods=['GET', 'POST'])
 @login_required
-def editpost(title):
-    post = Post.query.filter_by(title=title).first_or_404()
+def editpost(id):
+    post = Post.query.get_or_404(id)
     if current_user != post.author:
         abort(403)
     form = PostForm()
     if form.validate_on_submit():
+        post.title = form.title.data
         post.body = form.post.data
         db.session.add(post)
         db.session.commit()
         flash('The post has been updated.')
-        return redirect(url_for('posts.post', title=post.title))
+        return redirect(url_for('posts.post', id=post.id))
+    form.title.data = post.title
     form.post.data = post.body
     return render_template('edit_post.html', form=form)
