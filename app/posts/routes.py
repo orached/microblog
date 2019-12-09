@@ -4,8 +4,8 @@ from flask_login import current_user, login_required
 from flask_babel import _
 from guess_language import guess_language
 from app import db
-from app.posts.forms import PostForm
-from app.models import Post
+from app.posts.forms import PostForm, CommentForm
+from app.models import Post, Comment
 from app.translate import translate
 from app.posts import bp
 
@@ -42,10 +42,22 @@ def translate_text():
                                       request.form['source_language'],
                                       request.form['dest_language'])})
 
-@bp.route('/post/<int:id>')
+@bp.route('/post/<int:id>', methods=['GET', 'POST'])
 def post(id):
     post = Post.query.get_or_404(id)
-    return render_template('post.html', post=post)
+    form = CommentForm()
+    if form.validate_on_submit():
+        language = guess_language(form.comment.data)
+        if language == 'UNKNOWN' or len(language) > 5:
+            language = ''
+        comment = Comment(body=form.comment.data, post=post, 
+                        author=current_user, language=language)
+        db.session.add(comment)
+        db.session.commit()
+        flash('Your comment has been published.')
+        return redirect(url_for('posts.post', id=post.id))
+    comments = post.comments.order_by(Comment.timestamp.asc())
+    return render_template('post.html', post=post, form=form, comments=comments)
 
 
 @bp.route('/editpost/<int:id>', methods=['GET', 'POST'])

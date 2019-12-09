@@ -1,0 +1,38 @@
+<table class="table table-hover">
+    <tr>
+        <td width="70px">
+            <a href="{{ url_for('users.user', username=comment.author.username) }}">
+                <img src="{{ comment.author.avatar(70) }}" />
+            </a>
+        </td>
+        <td>
+            {% set user_link %}
+                <span class="user_popup">
+                    <a href="{{ url_for('users.user', username=comment.author.username) }}">
+                        {{ comment.author.username }}
+                    </a>
+                </span>
+            {% endset %}
+            {{ _('%(username)s said %(when)s',
+                username=user_link, when=moment(comment.timestamp).fromNow()) }}
+            <br>
+            <span id="comment{{ comment.id }}">
+                {% if comment.body_html %}
+                    {{ comment.body_html | safe }}
+                {% else %}
+                    {{ comment.body }}
+                {% endif %}
+            </span>
+            {% if comment.language and comment.language != g.locale %}
+            <br><br>
+            <span id="translation{{ comment.id }}">
+                <a href="javascript:translate(
+                            '#comment{{ comment.id }}',
+                            '#translation{{ comment.id }}',
+                            '{{ comment.language }}',
+                            '{{ g.locale }}');">{{ _('Translate') }}</a>
+            </span>
+            {% endif %}
+        </td>
+    </tr>
+</table>

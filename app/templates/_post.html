@@ -40,6 +40,11 @@
                 <span class="label label-primary">Edit</span>
             </a>
             {% endif %}
+            <a href="{{ url_for('posts.post', id=post.id) }}#comments">
+                <span class="label label-primary">
+                {{ post.comments.count() }} Comments
+                </span>
+            </a>
         </td>
     </tr>
 </table>
