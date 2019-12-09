@@ -2,14 +2,16 @@
     <tr>
         <td width="64" style="border: 0px;"><img src="{{ user.avatar(64) }}"></td>
         <td style="border: 0px;">
+            {% if current_user.is_authenticated %}
             <p><a href="{{ url_for('users.user', username=user.username) }}">{{ user.username }}</a></p>
+            {% endif %}
             <small>
                 {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
                 {% if user.last_seen %}
                 <p>{{ _('Last seen on') }}: {{ moment(user.last_seen).format('lll') }}</p>
                 {% endif %}
                 <p>{{ _('%(count)d followers', count=user.followers.count()) }}, {{ _('%(count)d following', count=user.followed.count()) }}</p>
-                {% if user != current_user %}
+                {% if user != current_user and  current_user.is_authenticated %}
                     {% if not current_user.is_following(user) %}
                     <a href="{{ url_for('users.follow', username=user.username) }}">{{ _('Follow') }}</a>
                     {% else %}
