@@ -12,7 +12,7 @@ from flask_babel import Babel, lazy_gettext as _l
 from elasticsearch import Elasticsearch
 from redis import Redis
 import rq
-from config import Config
+from config import config
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -25,9 +25,10 @@ moment = Moment()
 babel = Babel()
 
 
-def create_app(config_class=Config):
+def create_app(config_name):
     app = Flask(__name__)
-    app.config.from_object(config_class)
+    app.config.from_object(config[config_name])
+    config[config_name].init_app(app)
 
     db.init_app(app)
     migrate.init_app(app, db)
