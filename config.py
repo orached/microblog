@@ -41,6 +41,7 @@ class TestingConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
     ELASTICSEARCH_URL = None
+    WTF_CSRF_ENABLED = False
 
 
 config = {
