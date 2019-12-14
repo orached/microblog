@@ -5,7 +5,7 @@ from app import create_app, db
 from app.models import User, Post
 
 
-class UserModelCase(unittest.TestCase):
+class TestUserModelCase(unittest.TestCase):
     def setUp(self):
         self.app = create_app('testing')
         self.app_context = self.app.app_context()
