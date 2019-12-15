@@ -1,5 +1,12 @@
 import pytest
 from app import create_app, db
+from app.models import User
+
+@pytest.fixture()
+def new_user():
+    u = User(username='john', email='john@example.com')
+    return u
+
 
 @pytest.fixture()
 def setUp():

@@ -10,17 +10,17 @@ def test_home_page(setUp):
 def test_register_and_login(setUp):
     # register a new account
     response = setUp.post('/auth/register', data={
-        'email': 'john@example.com',
-        'username': 'john',
-        'password': 'cat',
-        'password2': 'cat'
+        'email': 'donald@example.com',
+        'username': 'donald',
+        'password': 'bird',
+        'password2': 'bird'
     })
     assert response.status_code == 302
 
     # login with the new account
     response = setUp.post('/auth/login', data={
-        'email': 'john@example.com',
-        'password': 'cat'
+        'username': 'donald',
+        'password': 'bird'
     }, follow_redirects=True)
     assert response.status_code == 200
 
