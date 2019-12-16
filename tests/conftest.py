@@ -65,6 +65,7 @@ def setUp():
 @pytest.fixture()
 def populate_db(new_users, new_posts, new_comments):
     u1, u2, u3, u4 = new_users
+    u1.set_password('cat')  #Set password for john
     db.session.add_all([u1, u2, u3, u4])
     p1, p2, p3, p4 = new_posts
     db.session.add_all([p1, p2, p3, p4])
@@ -78,3 +79,12 @@ def populate_db(new_users, new_posts, new_comments):
     u3.follow(u4)  # mary follows david
 
     db.session.commit()
+
+
+@pytest.fixture()
+def user_logged(setUp, populate_db):
+    # login with john's account
+    response = setUp.post('/auth/login', data={
+        'username': 'john',
+        'password': 'cat'
+    }, follow_redirects=True)
