@@ -6,10 +6,10 @@ from flask_babel import _, get_locale
 from app import db
 from app.main.forms import SearchForm
 from app.models import Post
-from app.main import bp
+from app.main import main
 
 
-@bp.before_app_request
+@main.before_app_request
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
@@ -18,8 +18,8 @@ def before_request():
     g.locale = str(get_locale())
 
 
-@bp.route('/')
-@bp.route('/index')
+@main.route('/')
+@main.route('/index')
 def index():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
@@ -33,7 +33,7 @@ def index():
                            prev_url=prev_url)
 
 
-@bp.route('/search')
+@main.route('/search')
 def search():
     if not g.search_form.validate():
         return redirect(url_for('main.index'))
@@ -48,6 +48,6 @@ def search():
                            next_url=next_url, prev_url=prev_url)
 
 
-@bp.route("/about")
+@main.route("/about")
 def about():
     return render_template('about.html', title='About')

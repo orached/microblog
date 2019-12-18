@@ -1,5 +1,6 @@
 import pytest
 from app import db
+import time
 from app.models import User, Post, Message, Notification, Task
 
 def test_new_user(new_users):
@@ -77,11 +78,73 @@ def test_follow_posts(setUp, populate_db):
     assert f3 == [p3, p4]
     assert f4 == [p4]
 
+
+@pytest.mark.skip(reason='to long to be executed each build. Run manualy')
+def test_confirmation_token(setUp, new_users, populate_db):
+    u1, u2 = new_users[0:2]
+    """
+    GIVEN a new visitor
+    WHEN a submit successfully the registration form
+    THEN a confirmation token is created
+    """
+    token1 = u1.get_confirm_token()
+    assert u1.verify_confirm_token(token1)
+
+    """
+    GIVEN 2 different visitors
+    WHEN both submit successfully the registration form
+    THEN the confirmation token is different for each user
+    """
+    u2.set_password('dog')
+    token2 = u2.get_confirm_token()
+    u = u2.verify_confirm_token(token1)
+    assert not (u.username == 'susan')
+    assert u2.verify_confirm_token(token2)
+
+    """
+    GIVEN a new registred user
+    WHEN he didn't confirm his email by delay allowed 
+    THEN the token expires
+    """
+    time.sleep(605)
+    assert not u1.verify_confirm_token(token1)
+
+
+@pytest.mark.skip(reason='to long to be executed each build. Run manualy')
+def test_reset_password_token(setUp, new_users, populate_db):
+    u1, u2 = new_users[0:2]
+    """
+    GIVEN a user
+    WHEN he asks for password reset
+    THEN a password reset token is created
+    """
+    token1 = u1.get_reset_password_token()
+    assert u1.verify_reset_password_token(token1)
+
+    """
+    GIVEN 2 different users
+    WHEN both ask for passwprd reset
+    THEN the reset password token is different for each user
+    """
+    token2 = u2.get_reset_password_token()
+    u = u2.verify_reset_password_token(token1)
+    assert not (u.username == 'susan')
+    assert u2.verify_reset_password_token(token2)
+
+    """
+    GIVEN a user
+    WHEN he didn't access the email by the delay allowed 
+    THEN the reset password token expires
+    """
+    time.sleep(605)
+    assert not u1.verify_reset_password_token(token1)
+
+
 def test_new_message():
     """
     GIVEN a Message model
     WHEN a new Message is created
-    THEN check that it's attributes are set correctly
+    THEN check that its attributes are set correctly
     """
     
     # TBD
@@ -92,7 +155,7 @@ def test_new_notification():
     """
     GIVEN a Notification model
     WHEN a new Notification is created
-    THEN check that it's attributes are set correctly
+    THEN check that its attributes are set correctly
     """
     
     # TBD

@@ -29,10 +29,10 @@ def test_editpost_page(setUp, populate_db):
         'password': 'cat'
     }, follow_redirects=True)
     response = setUp.get('/editpost/1', follow_redirects=True)
-    assert b"Edit post" in response.data
-    response = setUp.post('/editpost', data={
-        'title': 'My second post',
-        'post': 'Amazing content here'
+    assert b"Edit Post" in response.data
+    response = setUp.post('/editpost/1', data={
+        'title': 'My first post',
+        'post': 'First amazing content here'
     }, follow_redirects=True)
     assert response.status_code == 200
-    assert b"Your post is now live!" in response.data
+    assert b"The post has been updated." in response.data
