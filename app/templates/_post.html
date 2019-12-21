@@ -45,6 +45,10 @@
                 {{ post.comments.count() }} Comments
                 </span>
             </a>
+            <span>
+                <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+                <script type="IN/Share" data-url="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('posts.post', id=post.id, _external=True) }}&title={{ post.title }}"></script>
+            </span>
         </td>
     </tr>
 </table>
