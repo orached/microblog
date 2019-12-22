@@ -26,7 +26,7 @@
                 {% endif %}
             </span>
             {% if post.language and post.language != g.locale %}
-            <br><br>
+            <br>
             <span id="translation{{ post.id }}">
                 <a href="javascript:translate(
                             '#post{{ post.id }}',
@@ -45,11 +45,15 @@
                 {{ post.comments.count() }} Comments
                 </span>
             </a>
-            <span>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('posts.post', id=post.id, _external=True) }}&title={{ post.title }}">
-                    Share
-                </a>
+            <span class=pull-right>
+                <ul>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false"></a></li>
+                    <li><script type="IN/Share" data-url="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('posts.post', id=post.id, _external=True) }}&title={{ post.title }}"></script></li>
+                </ul>
             </span>
         </td>
     </tr>
 </table>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
