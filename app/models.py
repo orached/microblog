@@ -260,7 +260,7 @@ def load_user(id):
 
 
 class Post(SearchableMixin, db.Model):
-    __searchable__ = ['body']
+    __searchable__ = ['body_html']
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(140), index=True, unique=True)
     body = db.Column(db.Text)
@@ -278,7 +278,6 @@ class Post(SearchableMixin, db.Model):
         target.body_html = bleach.linkify(bleach.clean(
             markdown(value, output_format='html'),
             tags=allowed_tags, strip=True))
-
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)

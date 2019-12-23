@@ -2,10 +2,38 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
+<main role="main" class="container">
+    <div class="col-md-8">
     {% for post in posts %}
         {% include '_post.html' %}
     {% endfor %}
-    <nav aria-label="...">
+    </div>
+    <div class="col-md-4">
+        <div class="row content-section">
+            <h2>Search</h2>
+            {% if g.search_form %}
+            <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
+                <div class="form-group">
+                    {{ g.search_form.q(size=20, class='form-control', placeholder=g.search_form.q.label.text) }}
+                </div>
+            </form>
+            {% endif %}
+        </div>
+        <br>
+        <div class="row content-section">
+            <h2>More</h2>
+            <ul class="list-group">
+                <li class="list-group-item">Latest Posts</li>
+                <li class="list-group-item">Announcements</li>
+                <li class="list-group-item">Calendars</li>
+                <li class="list-group-item">etc</li>
+            </ul>
+        </div>
+    </div>
+   
+   
+</main>
+ <nav aria-label="...">
         <ul class="pager">
             <li class="previous{% if not prev_url %} disabled{% endif %}">
                 <a href="{{ prev_url or '#' }}">

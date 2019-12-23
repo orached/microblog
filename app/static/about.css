@@ -1,0 +1,273 @@
+
+
+/* --------------------
+*  main Wrapper
+* -------------------*/
+#main-wrapper {
+    overflow : hidden;
+    }
+  
+  /*-------------------
+  * Section Wrapper
+  *-------------------*/
+  .section-wrapper {
+    padding : 20px 0;
+    }
+  
+  @media (max-width : 768px) {
+    .section-wrapper {
+        padding : 10px 0;
+        }
+    }
+  
+  @media (max-width : 600px){
+    .section-wrapper {
+        padding : 10px;
+        }
+    }
+  
+  /*---------------------------
+  * Section Title
+  *---------------------------*/
+  .section-title {
+    margin-right : 30px;
+    text-align   : right;
+    }
+  
+  .section-title h2 {
+    font-size      : 14px;
+    margin-bottom  : 5px;
+    color          : #bbbbbb;
+    text-transform : uppercase;
+    }
+  
+  @media (max-width: 768px) {
+    .section-title{
+        text-align: left;
+        }
+    .section-title h2{
+        font-size: 18px;
+        margin-bottom: 20px;
+        }
+    }
+  
+  /*-----------------------------
+  * NAVIGATION & HEADER STYLE
+  *-----------------------------*/
+  
+  .header {
+    padding    : 20px 0;
+    margin     : 0;
+    position   : relative;
+    }
+  
+  .header .profile-img {
+    margin-right : 30px;
+    }
+  
+  .header .name-wrapper {
+    margin-bottom : 20px;
+    }
+  
+  .header .name-wrapper h1 {
+    text-transform : uppercase;
+    line-height    : 1;
+    margin         : 0 0 5px;
+    }
+  
+  .header .name-wrapper span {
+    font-size : 24px;
+    color     : #ff5722;
+    }
+  
+  .header .personal-details {
+    margin : 10px 0;
+    }
+  
+  .header .personal-details strong {
+    font-size   : 13px;
+    color       : #444444;
+    display     : block;
+    line-height : 1;
+    }
+  
+  .header .personal-details small {
+    font-size : 12px;
+    }
+  
+  .header .personal-details span {
+    color : #989898;
+    }
+  
+  @media (max-width : 768px) {
+    .header {
+        padding: 10px;
+        }
+    }
+  
+  @media (max-width : 600px){
+    .header{
+        padding: 10px;
+        }
+    }
+  
+  
+    /*-------------------
+     * Social Icon
+     *-------------------*/
+  
+  .social-icon {
+    margin  : 20px 0;
+    padding : 0;
+    display : block;
+    }
+  
+  .social-icon li {
+    display : inline-block;
+    margin  : 0 2px;
+    }
+  
+  .social-icon li a {
+    display       : block;
+    width         : 34px;
+    height        : 34px;
+    line-height   : 33px;
+    text-align    : center;
+    }
+  
+  .social-icon li a:hover {
+    border-color : #cccccc;
+    }
+  
+  
+  /*-------------------
+  * Expertise
+  *-------------------*/
+  .item-stats .item-stats-value{
+    font-size: 18px;
+    color: #444;
+    font-weight: 500;
+    }
+  
+  .item-stats .item-stats-name{
+    font-size: 12px;
+    text-transform: uppercase;
+    line-height: 1;
+    }
+  
+  
+  @media (max-width: 768px) {
+    .item-stats{
+        margin-bottom: 30px;
+        }
+    }
+  
+  /*-------------------
+  * Expertise
+  *-------------------*/
+  .expertise-item {
+    margin-bottom : 20px;
+    }
+  
+  .expertise-item h3 {
+    text-transform : uppercase;
+    margin-bottom  : 5px;
+    }
+  
+  /*-------------------
+  * Skills Progressbar
+  *-------------------*/
+  
+  .progress-item {
+    position : relative;
+    }
+  
+  .progress-item .progress-title {
+    font-size     : 12px;
+    font-weight   : 400;
+    display       : inline-block;
+    margin-bottom : 5px;
+    }
+  
+  .progress-item .progress {
+    height        : 2px;
+    box-shadow    : none;
+    border-radius : 0;
+    background    : transparent;
+    }
+  
+  .progress-item .progress-bar {
+    background-color : #ff5722;
+    box-shadow       : none;
+    text-align       : right;
+    }
+  
+  .progress-item .progress-percent {
+    font-size        : 10px;
+    background-color : #313131;
+    position         : absolute;
+    top              : 5px;
+    padding          : 0 8px;
+    border-radius    : 3px;
+    }
+  
+  .progress-item .progress-percent::before {
+    content      : "";
+    position     : absolute;
+    left         : 0;
+    bottom       : -4px;
+    border-top   : 6px solid #313131;
+    border-right : 8px solid transparent;
+    }
+  
+  
+  @media (max-width: 768px) {
+    .progress-wrapper{
+        margin-bottom: 50px;
+        }
+    }
+  
+  
+  /*-------------------
+  * Content Item
+  *-------------------*/
+  
+  .content-title {
+    margin-bottom : 7px;
+    }
+  
+  .content-title h3 {
+    margin         : 0 0 10px;
+    line-height    : 1;
+    font-weight    : bold;
+    text-transform : uppercase;
+    }
+  
+  .content-item {
+    margin-bottom : 20px;
+    }
+  
+  .content-item h3 {
+    margin         : 0 0 10px;
+    line-height    : 1;
+    font-weight    : bold;
+    }
+  
+  .content-item h4 {
+    margin      : 0;
+    line-height : 1;
+    }
+  
+  .content-item small {
+    color : #888888;
+    margin-bottom  : 5px;
+    }
+  
+  /*-------------------
+  * Contact
+  *-------------------*/
+  
+  .section-contact address strong {
+    font-size      : 13px;
+    text-transform : uppercase;
+    }
