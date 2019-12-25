@@ -10,8 +10,10 @@
     by <a href="{{ url_for('users.user', username=post.author.username) }}">
         <img src="{{ post.author.avatar(70) }} " width="20px" />
     </a>
-    {{ _('%(username)s said %(when)s',
-        username=user_link, when=moment(post.timestamp).fromNow()) }}
+    {{ _('%(username)s', username=user_link) }}
+        <span class=pull-right>
+            {{ _('%(when)s', when=post.timestamp.date()) }}
+        </span>
     <tr>
         <td>
             <span id="post{{ post.id }}">

@@ -20,13 +20,13 @@ def new_posts(new_users):
     now = datetime.utcnow()
     
     return (
-        Post(body="post from john", author=u1,
+        Post(body="post from john", body_html="<p>post from john</p>", author=u1,
             timestamp=now + timedelta(seconds=1)),
-        Post(body="post from susan", author=u2,
+        Post(body="post from susan", body_html="<p>post from susan</p>", author=u2,
                 timestamp=now + timedelta(seconds=4)),
-        Post(body="post from mary", author=u3,
+        Post(body="post from mary", body_html="<p>post from mary</p>", author=u3,
                 timestamp=now + timedelta(seconds=3)),
-        Post(body="post from david", author=u4,
+        Post(body="post from david", body_html="<p>post from david</p>", author=u4,
                 timestamp=now + timedelta(seconds=2))
     )
 
