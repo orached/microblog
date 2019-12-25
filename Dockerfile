@@ -4,10 +4,9 @@ RUN adduser -D microblog
 
 WORKDIR /home/microblog
 
-COPY requirements.txt requirements.txt
+COPY requirements requirements
 RUN python -m venv venv
-RUN venv/bin/pip install -r requirements.txt
-RUN venv/bin/pip install gunicorn pymysql
+RUN venv/bin/pip install -r requirements/prod.txt
 
 COPY app app
 COPY migrations migrations

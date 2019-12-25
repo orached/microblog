@@ -66,7 +66,10 @@ def setUp():
 def populate_db(new_users, new_posts, new_comments):
     u1, u2, u3, u4 = new_users
     u1.set_password('cat')  #Set password for john
+    u2.set_password('dog')  #Set password for susan
+    u3.set_password('fox')  #Set password for mary
     u1.confirmed = True
+    u2.confirmed = True
     db.session.add_all([u1, u2, u3, u4])
     p1, p2, p3, p4 = new_posts
     db.session.add_all([p1, p2, p3, p4])
