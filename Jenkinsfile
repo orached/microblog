@@ -5,11 +5,17 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building'
+                echo 'Running ${env.BUILD_ID} on ${env.JENKINS_URL}'
+                checkout scm
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing'
+                bat '''cd microblog
+                       venv/Scripts/activate.bat
+                       pytest
+                    '''
             }
         }
         stage('Deploy') {
