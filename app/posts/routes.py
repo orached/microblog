@@ -75,5 +75,5 @@ def editpost(id):
         flash('The post has been updated.')
         return redirect(url_for('posts.post', id=post.id))
     form.title.data = post.title
-    form.post.data = post.body
+    form.post.data = post.body_html
     return render_template('edit_post.html', form=form)

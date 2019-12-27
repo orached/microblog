@@ -39,8 +39,8 @@
             
             <span class=pull-right>
                 <ul>
-                    <li><a href="https://twitter.com/intent/tweet?url={{ url_for('posts.post', id=post.id, _external=True) }}&text={{ post.title }}" target="_blank" class="twitter-share-button" data-show-count="false"></a></li>
-                    <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('posts.post', id=post.id, _external=True) }}&title={{ post.title }}" target="_blank"><img src="./static/img/linkedin-share.png"/></a></li>
+                    <a href="https://twitter.com/intent/tweet?url={{ url_for('posts.post', id=post.id, _external=True) }}&text={{ post.title }}" target="_blank"><img src="{{ url_for('static', filename='twitter-share.png') }}"/></a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('posts.post', id=post.id, _external=True) }}&title={{ post.title }}" target="_blank"><img src="{{ url_for('static', filename='linkedin-share.png') }}"/></a>
                 </ul>
             </span>
         </td>
