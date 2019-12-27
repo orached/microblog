@@ -7,10 +7,10 @@
             </a>
         </span>
     {% endset %}
-    by <a href="{{ url_for('users.user', username=post.author.username) }}">
+    by {{ _('%(username)s', username=user_link) }}
+    <a href="{{ url_for('users.user', username=post.author.username) }}">
         <img src="{{ post.author.avatar(70) }} " width="20px" />
     </a>
-    {{ _('%(username)s', username=user_link) }}
         <span class=pull-right>
             {{ _('%(when)s', when=post.timestamp.date()) }}
         </span>
@@ -38,8 +38,10 @@
             </a>
             <span class=pull-right>
                 <ul>
-                    <li><a href="https://twitter.com/intent/tweet?url=url={{ url_for('posts.post', id=post.id, _external=True) }}&text={{ post.title }}" class="twitter-share-button" data-show-count="false"></a></li>
+                    <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
                     <li><script type="IN/Share" data-url="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('posts.post', id=post.id, _external=True) }}&title={{ post.title }}"></script></li>
+                    <li><a href="https://twitter.com/intent/tweet?url=url={{ url_for('posts.post', id=post.id, _external=True) }}&text={{ post.title }}" class="twitter-share-button" data-show-count="false"></a></li>
+                    
                     <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('posts.post', id=post.id, _external=True) }}&title={{ post.title }}">share</a></li>
                 </ul>
             </span>
@@ -48,4 +50,3 @@
 </table>
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
