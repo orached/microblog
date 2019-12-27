@@ -36,10 +36,11 @@
                 {{ post.comments.count() }} Comments
                 </span>
             </a>
+            <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+                    <script type="IN/Share" data-url="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('posts.post', id=post.id, _external=True) }}&title={{ post.title }}"></script>
             <span class=pull-right>
                 <ul>
-                    <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
-                    <li><script type="IN/Share" data-url="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('posts.post', id=post.id, _external=True) }}&title={{ post.title }}"></script></li>
+                    
                     <li><a href="https://twitter.com/intent/tweet?url=url={{ url_for('posts.post', id=post.id, _external=True) }}&text={{ post.title }}" class="twitter-share-button" data-show-count="false"></a></li>
                     
                     <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('posts.post', id=post.id, _external=True) }}&title={{ post.title }}">share</a></li>
