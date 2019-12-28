@@ -5,7 +5,7 @@ from flask_babel import _
 from guess_language import guess_language
 from app import db
 from app.posts.forms import PostForm, CommentForm
-from app.models import Post, Comment
+from app.models import Post, Comment, Category
 from app.translate import translate
 from app.posts import bp
 
@@ -13,13 +13,15 @@ from app.posts import bp
 @bp.route('/managepost', methods=['GET', 'POST'])
 @login_required
 def managepost():
+    category_list=[(g.id, g.title) for g in Category.query.all()]
     form = PostForm()
+    form.category.choices = category_list
     if form.validate_on_submit():
         language = guess_language(form.post.data)
         if language == 'UNKNOWN' or len(language) > 5:
             language = ''
         post = Post(title=form.title.data, body_html=form.post.data, author=current_user,
-                    language=language)
+                    language=language, category_id=form.category.data)
         db.session.add(post)
         db.session.commit()
         flash(_('Your post is now live!'))
@@ -66,9 +68,12 @@ def editpost(id):
     post = Post.query.get_or_404(id)
     if current_user != post.author:
         abort(403)
+    category_list=[(g.id, g.title) for g in Category.query.all()]
     form = PostForm()
+    form.category.choices = category_list
     if form.validate_on_submit():
         post.title = form.title.data
+        post.category_id = form.category.data
         post.body_html = form.post.data
         db.session.add(post)
         db.session.commit()
@@ -77,3 +82,10 @@ def editpost(id):
     form.title.data = post.title
     form.post.data = post.body_html
     return render_template('edit_post.html', form=form)
+
+
+@bp.route('/category/<int:id>')
+def category(id):
+    category = Category.query.get_or_404(id)
+    posts = category.posts.order_by(Post.id)
+    return render_template('category.html', category=category, posts=posts)

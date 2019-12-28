@@ -259,6 +259,29 @@ def load_user(id):
     return User.query.get(int(id))
 
 
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(140))
+    posts = db.relationship('Post', backref='category', lazy='dynamic')
+
+    @staticmethod
+    def insert_categories():
+        categories = {
+            Category(title='General'),
+            Category(title='Unit test'),
+            Category(title='Integration test'),
+            Category(title='End-to-end test'),
+            Category(title='Test automation'),
+            Category(title='Continuous Integration and Delivery'),
+            Category(title='Development basics'),
+            Category(title='Ops basics')
+        }
+        for cat in categories:
+            db.session.add(cat)
+        db.session.commit()
+
+
+
 class Post(SearchableMixin, db.Model):
     __searchable__ = ['body_html']
     id = db.Column(db.Integer, primary_key=True)
@@ -267,6 +290,7 @@ class Post(SearchableMixin, db.Model):
     body_html = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     language = db.Column(db.String(5))
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
 

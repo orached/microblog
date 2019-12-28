@@ -40,6 +40,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['followed_id'], ['user.id'], ),
     sa.ForeignKeyConstraint(['follower_id'], ['user.id'], )
     )
+    
     op.create_table('message',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('sender_id', sa.Integer(), nullable=True),
@@ -52,6 +53,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_message_timestamp'), 'message', ['timestamp'], unique=False)
+    
     op.create_table('notification',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=128), nullable=True),
@@ -63,6 +65,13 @@ def upgrade():
     )
     op.create_index(op.f('ix_notification_name'), 'notification', ['name'], unique=False)
     op.create_index(op.f('ix_notification_timestamp'), 'notification', ['timestamp'], unique=False)
+    
+    op.create_table('category',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('title', sa.String(length=140), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    
     op.create_table('post',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=140), nullable=True),
@@ -70,12 +79,15 @@ def upgrade():
     sa.Column('body_html', sa.Text(), nullable=True),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('category_id', sa.Integer(), nullable=True),
     sa.Column('language', sa.String(length=5), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
+    sa.ForeignKeyConstraint(['category_id'], ['category.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_post_timestamp'), 'post', ['timestamp'], unique=False)
     op.create_index(op.f('ix_post_title'), 'post', ['title'], unique=True)
+    
     op.create_table('task',
     sa.Column('id', sa.String(length=36), nullable=False),
     sa.Column('name', sa.String(length=128), nullable=True),
@@ -86,6 +98,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_task_name'), 'task', ['name'], unique=False)
+    
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('body', sa.Text(), nullable=True),

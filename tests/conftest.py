@@ -1,6 +1,6 @@
 import pytest
 from app import create_app, db
-from app.models import User, Post, Comment
+from app.models import User, Post, Comment, Category
 from datetime import datetime, timedelta
 
 @pytest.fixture()
@@ -64,6 +64,7 @@ def setUp():
 
 @pytest.fixture()
 def populate_db(new_users, new_posts, new_comments):
+    Category.insert_categories()
     u1, u2, u3, u4 = new_users
     u1.set_password('cat')  #Set password for john
     u2.set_password('dog')  #Set password for susan
@@ -72,6 +73,10 @@ def populate_db(new_users, new_posts, new_comments):
     u2.confirmed = True
     db.session.add_all([u1, u2, u3, u4])
     p1, p2, p3, p4 = new_posts
+    p1.category_id=1    #Set category 1 to post 1
+    p2.category_id=2    #Set category 2 to post 2
+    p3.category_id=3    #Set category 3 to post 3
+    p4.category_id=1    #Set category 1 to post 4
     db.session.add_all([p1, p2, p3, p4])
     c1, c2, c3, c4 = new_comments
     db.session.add_all([c1, c2, c3, c4])
