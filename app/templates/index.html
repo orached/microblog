@@ -23,13 +23,13 @@
         <div class="row content-section">
             <h2>Browse by category</h2>
             <ul class="list-group">
-                <li class="list-group-item">Unit test</li>
-                <li class="list-group-item">Integration test</li>
-                <li class="list-group-item">End to end</li>
-                <li class="list-group-item">Automation</li>
-                <li class="list-group-item">Continuous integration</li>
-                <li class="list-group-item">Developement basics</li>
-                <li class="list-group-item">Ops basics</li>
+                {% for category in categories %}
+                <a href="{{ url_for('posts.category', id=category.id) }}">
+                    <span class="label label-info">{{ category.title }}</span>
+                </a>
+                ({{ category.posts.count() }})
+                <br>
+                {% endfor %}
             </ul>
         </div>
         <br>

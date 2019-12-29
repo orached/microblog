@@ -5,7 +5,7 @@ from flask_login import current_user
 from flask_babel import _, get_locale
 from app import db
 from app.main.forms import SearchForm
-from app.models import Post
+from app.models import Post, Category
 from app.main import main
 
 
@@ -22,6 +22,7 @@ def before_request():
 @main.route('/index')
 def index():
     page = request.args.get('page', 1, type=int)
+    categories = Category.query.all()
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
         page, current_app.config['POSTS_PER_PAGE'], False)
     next_url = url_for('main.index', page=posts.next_num) \
@@ -29,7 +30,7 @@ def index():
     prev_url = url_for('main.index', page=posts.prev_num) \
         if posts.has_prev else None
     return render_template('index.html', title=_('Index'),
-                           posts=posts.items, next_url=next_url,
+                           categories=categories, posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
 
