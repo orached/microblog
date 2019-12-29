@@ -1,4 +1,7 @@
 import pytest
+import threading
+import time
+from selenium import webdriver
 from app import create_app, db
 from app.models import User, Post, Comment, Category
 from datetime import datetime, timedelta
@@ -88,6 +91,58 @@ def populate_db(new_users, new_posts, new_comments):
     u3.follow(u4)  # mary follows david
 
     db.session.commit()
+
+
+@pytest.fixture()
+def setUp_selenium():
+    # start Chrome
+    path="C:\\Users\\hpfolio\\Downloads\\chromedriver_win32\\chromedriver.exe"
+    options = webdriver.ChromeOptions()
+    options.add_argument('headless')
+    try:
+        driver = webdriver.Chrome(chrome_options=options, executable_path=path)
+    except:
+        pass
+    
+    # skip these tests if the browser could not be started
+    if driver:
+        # create the application
+        app = create_app('testing')
+        app_context = app.app_context()
+        app_context.push()
+
+        # suppress logging to keep unittest output clean
+        import logging
+        logger = logging.getLogger('werkzeug')
+        logger.setLevel("ERROR")
+
+        # create the database and populate with some fake data
+        db.create_all()
+        Category.insert_categories()
+        db.session.commit()
+
+        # start the Flask server in a thread
+        server_thread = threading.Thread(target=app.run,
+                                                kwargs={'debug': False})
+        server_thread.start()
+
+        # give the server 2 seconds to ensure it is up
+        time.sleep(2) 
+    
+    yield driver
+    
+    if driver:
+        # stop the flask server and the browser
+        driver.get('http://localhost:5000/shutdown')
+        driver.quit()
+        server_thread.join()
+
+        # destroy database
+        db.drop_all()
+        db.session.remove()
+
+        # remove application context
+        app_context.pop()
 
 
 @pytest.fixture()

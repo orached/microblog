@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request, g, \
-    jsonify, current_app
+    jsonify, current_app, abort
 from flask_login import current_user
 from flask_babel import _, get_locale
 from app import db
@@ -52,3 +52,14 @@ def search():
 @main.route("/about")
 def about():
     return render_template('about.html', title='About')
+
+
+@main.route('/shutdown')
+def server_shutdown():
+    if not current_app.testing:
+        abort(404)
+    shutdown = request.environ.get('werkzeug.server.shutdown')
+    if not shutdown:
+        abort(500)
+    shutdown()
+    return 'Shutting down...'
