@@ -7,11 +7,11 @@
             </a>
         </span>
     {% endset %}
-    by {{ _('%(username)s', username=user_link) }}
+    {{ _('by %(username)s', username=user_link) }}
     <a href="{{ url_for('users.user', username=post.author.username) }}">
         <img src="{{ post.author.avatar(70) }} " width="20px" />
     </a>
-    , under: 
+    {{ _(', under:') }} 
     {% if post.category %}
         <a href="{{ url_for('posts.category', id=post.category.id) }}">
             <span class="label label-info">{{ post.category.title }}</span>

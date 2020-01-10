@@ -18,7 +18,7 @@ class Config:
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['admin@orached.com']
-    LANGUAGES = ['en', 'es']
+    LANGUAGES = ['en', 'fr', 'es']
     MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')
     ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
     REDIS_URL = os.environ.get('REDIS_URL') or 'redis://'
@@ -38,6 +38,7 @@ class TestingConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
     ELASTICSEARCH_URL = None
     WTF_CSRF_ENABLED = False
+    LANGUAGES = ['en']
 
 
 config = {
