@@ -41,7 +41,7 @@
             {% endif %}
             <a href="{{ url_for('posts.post', id=post.id) }}#comments">
                 <span class="label label-primary">
-                {{ post.comments.count() }} Comments
+                {{ post.comments.count() }} {{ _('Comments') }}
                 </span>
             </a>
             

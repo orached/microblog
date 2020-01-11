@@ -4,7 +4,7 @@ from app.email import send_email
 
 def send_confirmation_email(user):
     token = user.get_confirm_token()
-    send_email(_('[Orached] Confirm you account'),
+    send_email(_('[Orached] Confirm your account'),
                sender=current_app.config['ADMINS'][0],
                recipients=[user.email],
                text_body=render_template('email/confirm.txt',

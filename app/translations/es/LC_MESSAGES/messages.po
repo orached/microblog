@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-01-02 11:22+0100\n"
+"POT-Creation-Date: 2020-01-10 18:45+0100\n"
 "PO-Revision-Date: 2017-09-29 23:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -31,12 +31,12 @@ msgid "Error: the translation service failed."
 msgstr "Error el servicio de traducciones ha fallado."
 
 #: app/auth/email.py:7
-msgid "[Orached] Confirm you account"
-msgstr ""
+msgid "[Orached] Confirm your account"
+msgstr "[Orached] Confirma su cuenta"
 
 #: app/auth/email.py:18
 msgid "[Orached] Reset Your Password"
-msgstr ""
+msgstr "[Orached] Restablecer su contraseña"
 
 #: app/auth/forms.py:9 app/auth/forms.py:16 app/users/forms.py:9
 msgid "Username"
@@ -82,6 +82,8 @@ msgstr "Pedir una nueva contraseña"
 #: app/auth/forms.py:42
 msgid "This email is unknown. Please use email you registred with."
 msgstr ""
+"Este correo electrónico es desconocido. Utilice el correo electrónico con"
+" el que se registró."
 
 #: app/auth/routes.py:41
 msgid "Invalid username or password"
@@ -89,15 +91,17 @@ msgstr "Nombre de usuario o contraseña inválidos"
 
 #: app/auth/routes.py:81
 msgid "The confirmation link is invalid or has expired."
-msgstr ""
+msgstr "El enlace de confirmación no es válido o ha expirado."
 
 #: app/auth/routes.py:85
 msgid "You have confirmed your account. Thanks!"
-msgstr ""
+msgstr "Has confirmado tu cuenta. ¡Gracias!"
 
 #: app/auth/routes.py:93
 msgid "A new confirmation email has been sent to you by email."
 msgstr ""
+"Se le ha enviado un nuevo correo electrónico de confirmación por correo "
+"electrónico."
 
 #: app/auth/routes.py:107
 msgid "Check your email for the instructions to reset your password"
@@ -117,19 +121,19 @@ msgstr "Buscar"
 
 #: app/main/routes.py:32
 msgid "Index"
-msgstr ""
+msgstr "Índice"
 
 #: app/posts/forms.py:8
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #: app/posts/forms.py:9 app/templates/category.html:4
 msgid "Category"
-msgstr ""
+msgstr "Categoría"
 
 #: app/posts/forms.py:10
 msgid "Content"
-msgstr ""
+msgstr "Contenido"
 
 #: app/posts/forms.py:11 app/posts/forms.py:15 app/users/forms.py:12
 #: app/users/forms.py:28
@@ -138,7 +142,7 @@ msgstr "Enviar"
 
 #: app/posts/forms.py:14
 msgid "Enter your comment"
-msgstr ""
+msgstr "Ingrese su comentario"
 
 #: app/posts/routes.py:27
 msgid "Your post is now live!"
@@ -146,7 +150,7 @@ msgstr "¡Tu artículo ha sido publicado!"
 
 #: app/posts/routes.py:36 app/templates/base.html:31
 msgid "Posts"
-msgstr ""
+msgstr "Artículos"
 
 #: app/templates/_comment.html:16
 #, python-format
@@ -160,20 +164,241 @@ msgstr "Traducir"
 #: app/templates/_post.html:10
 #, python-format
 msgid "by %(username)s"
-msgstr ""
+msgstr "por %(username)s"
 
 #: app/templates/_post.html:14
 msgid ", under:"
-msgstr ""
+msgstr ", debajo:"
 
 #: app/templates/_post.html:23
 #, python-format
 msgid "%(when)s"
 msgstr ""
 
+#: app/templates/_post.html:44 app/templates/post.html:17
+msgid "Comments"
+msgstr "Comentarios"
+
+#: app/templates/about.html:23
+msgid "QA engineer, DevOps oriented"
+msgstr "Ingeniero de control de calidad, orientado DevOps"
+
+#: app/templates/about.html:26
+msgid ""
+"Good mastery of the operational actions in all levels of Software Test "
+"Life Cycle:\n"
+"                    Requirements analysis, Test planning, Test design, "
+"Datasets construction, Test environment setup, Test execution, \n"
+"                    Bugs management, reporting."
+msgstr ""
+"Buen dominio de las acciones operativas en todos los niveles del ciclo de vida de Software Test :\n"
+"                    Análisis de requerimientos, Planificación de prueba, "
+"Prueba de diseño, Construcción de conjuntos de datos, Configuración del "
+"entorno de prueba, Ejecución de pruebas, \n"
+"                    Gestión de errores, informes."
+
+#: app/templates/about.html:31
+msgid "Ability to perform functional and technical tests and automation."
+msgstr "Capacidad para realizar pruebas funcionales y técnicas y automatización."
+
+#: app/templates/about.html:36
+msgid "MAY 12, 1989"
+msgstr "12 de mayo de 1989"
+
+#: app/templates/about.html:37
+msgid "BIRTH"
+msgstr "NACIMIENTO"
+
+#: app/templates/about.html:43
+msgid "NATIONALITY"
+msgstr "NACIONALIDAD"
+
+#: app/templates/about.html:52
+msgid "LANGUAGE"
+msgstr "IDIOMA"
+
+#: app/templates/about.html:74
+msgid "Specialities"
+msgstr "Especialidades"
+
+#: app/templates/about.html:81
+msgid "Software Test Strategy"
+msgstr "Estrategia de prueba de software"
+
+#: app/templates/about.html:82
+msgid ""
+"Implement an efficient test strategy in accordance with the technological"
+" constraints and project risks."
+msgstr ""
+"Implemente una estrategia de prueba eficiente de acuerdo con las "
+"limitaciones tecnológicas y los riesgos del proyecto."
+
+#: app/templates/about.html:87
+msgid "Testware Development"
+msgstr "Desarrollo de Testware"
+
+#: app/templates/about.html:88
+msgid ""
+"Design and manage accurate test cases according to end-users "
+"requirements. Implement and maintain test scripts in dev repository"
+msgstr ""
+"Diseñe y gestione casos de prueba precisos de acuerdo con los requisitos "
+"de los usuarios finales. Implemente y mantenga scripts de prueba en el "
+"repositorio de desarrollo"
+
+#: app/templates/about.html:95
+msgid "Continuous Integration & Deployment"
+msgstr "Integración continua e implementación"
+
+#: app/templates/about.html:96
+msgid ""
+"Interactively contribute to CI and CD by including test execution and "
+"reporting for every build."
+msgstr ""
+"Contribuya interactivamente a CI y CD al incluir la ejecución de pruebas "
+"y los informes para cada compilación."
+
+#: app/templates/about.html:101 app/templates/about.html:154
+msgid "Automation"
+msgstr "Automatización"
+
+#: app/templates/about.html:102
+msgid "Automate wisely pre-targeted test cases to avoid regression."
+msgstr ""
+"Automatice sabiamente casos de prueba previamente dirigidos para evitar "
+"la regresión."
+
+#: app/templates/about.html:117
+msgid "Skills"
+msgstr "Habilidades"
+
+#: app/templates/about.html:124
+msgid "TESTING"
+msgstr ""
+
+#: app/templates/about.html:126
+msgid "End-to-End"
+msgstr ""
+
+#: app/templates/about.html:135
+msgid "Integration"
+msgstr "Integración"
+
+#: app/templates/about.html:144
+msgid "Unit test"
+msgstr "Prueba de unidad"
+
+#: app/templates/about.html:224
+msgid "Work Experience"
+msgstr "Experiencia laboral"
+
+#: app/templates/about.html:230
+msgid "ETL TESTER"
+msgstr "PRUEBA ETL"
+
+#: app/templates/about.html:243
+msgid "Definition of the qualification strategy"
+msgstr "Definición de la estrategia de calificación."
+
+#: app/templates/about.html:244
+msgid "Performing Test tasks in all levels of ETL process"
+msgstr "Realización de tareas de prueba en todos los niveles del proceso ETL"
+
+#: app/templates/about.html:245
+msgid "Realization of complex scripts for data analysis"
+msgstr "Realización de scripts complejos para el análisis de datos."
+
+#: app/templates/about.html:246
+msgid "Administering projects in the test tool"
+msgstr "Administrar proyectos en la herramienta de prueba"
+
+#: app/templates/about.html:247
+msgid "Bug management"
+msgstr "Gestión de errores"
+
+#: app/templates/about.html:249
+msgid "Insurance | Lille, FRANCE"
+msgstr ""
+
+#: app/templates/about.html:251
+msgid "Pharmaceuticals | Brussels, BELGIUM"
+msgstr "Seguro | Lille, FRANCIA"
+
+#: app/templates/about.html:266
+msgid "TEST ANALYST"
+msgstr "ANALISTA DE PRUEBA"
+
+#: app/templates/about.html:279
+msgid "Assistance in Definition of the qualification strategy"
+msgstr "Asistencia en la definición de la estrategia de calificación."
+
+#: app/templates/about.html:280
+msgid "Test cases design and execution"
+msgstr "Diseño y ejecución de casos de prueba."
+
+#: app/templates/about.html:281
+msgid "Bugs detection and monitoring their resolution"
+msgstr "Detección de errores y monitoreo de su resolución."
+
+#: app/templates/about.html:282
+msgid "Participation in continuous integration project"
+msgstr "Participación en proyecto de integración continua."
+
+#: app/templates/about.html:284
+msgid "Insurance/Telecoms | Lille, FRANCE"
+msgstr "Seguros / Telecomunicaciones | Lille, FRANCIA"
+
+#: app/templates/about.html:306
+msgid "Education"
+msgstr "Educación"
+
+#: app/templates/about.html:312
+msgid "May 2019"
+msgstr "Mayo 2019"
+
+#: app/templates/about.html:313
+msgid "DevOps training"
+msgstr "Entrenamiento DevOps"
+
+#: app/templates/about.html:320
+msgid "October 2018"
+msgstr "Octubre 2018"
+
+#: app/templates/about.html:321
+msgid "ISTQB Test manager training"
+msgstr ""
+
+#: app/templates/about.html:331
+msgid "Master degree in IT"
+msgstr "Master en TI"
+
+#: app/templates/about.html:332
+msgid "Pau university"
+msgstr "Universidad Pau"
+
+#: app/templates/about.html:339
+msgid "Engineer degree in computer science"
+msgstr "Ingeniero en informática"
+
+#: app/templates/about.html:340
+msgid "National School of Informatics"
+msgstr "Escuela Nacional de Informática"
+
+#: app/templates/about.html:341
+msgid "Rabat, Morocco"
+msgstr "Rabat, Marruecos"
+
+#: app/templates/about.html:364
+msgid "Address"
+msgstr "Dirección"
+
+#: app/templates/about.html:373
+msgid "Phone Number"
+msgstr "Número de teléfono"
+
 #: app/templates/base.html:10
 msgid "Welcome to Orached.com"
-msgstr ""
+msgstr "Bienvenido a Orached.com"
 
 #: app/templates/base.html:29
 msgid "Home"
@@ -181,7 +406,7 @@ msgstr "Inicio"
 
 #: app/templates/base.html:33
 msgid "About"
-msgstr ""
+msgstr "Sobre mí"
 
 #: app/templates/base.html:37
 msgid "Login"
@@ -205,26 +430,42 @@ msgstr "Error: el servidor no pudo ser contactado."
 
 #: app/templates/category.html:12 app/templates/search.html:12
 msgid "Previous results"
-msgstr ""
+msgstr "Resultados anteriores"
 
 #: app/templates/category.html:17 app/templates/search.html:17
 msgid "Next results"
-msgstr ""
+msgstr "Resultados siguientes"
 
 #: app/templates/edit_post.html:11
 msgid "Edit Post"
-msgstr ""
+msgstr "Editar Artículo"
 
 #: app/templates/edit_profile.html:5 app/users/routes.py:47
 msgid "Edit Profile"
 msgstr "Editar Perfil"
 
-#: app/templates/index.html:51 app/templates/manage_post.html:24
+#: app/templates/index.html:23
+msgid "Browse by category"
+msgstr "Buscar por categoría"
+
+#: app/templates/index.html:36
+msgid "More"
+msgstr "Más"
+
+#: app/templates/index.html:38
+msgid "Announcements"
+msgstr "Anuncios"
+
+#: app/templates/index.html:39
+msgid "Calendars"
+msgstr "Calendarios"
+
+#: app/templates/index.html:50 app/templates/manage_post.html:24
 #: app/templates/user.html:37
 msgid "Newer posts"
 msgstr "Artículos siguientes"
 
-#: app/templates/index.html:56 app/templates/manage_post.html:29
+#: app/templates/index.html:55 app/templates/manage_post.html:29
 #: app/templates/user.html:42
 msgid "Older posts"
 msgstr "Artículos previos"
@@ -244,15 +485,11 @@ msgstr "Mensajes previos"
 
 #: app/templates/post.html:9
 msgid "Leave a comment"
-msgstr ""
-
-#: app/templates/post.html:17
-msgid "Comments"
-msgstr ""
+msgstr "Deja un comentario"
 
 #: app/templates/search.html:4
 msgid "Search Results"
-msgstr ""
+msgstr "Resultados de la búsqueda"
 
 #: app/templates/send_message.html:5
 #, python-format
@@ -385,7 +622,7 @@ msgid "Exporting posts..."
 msgstr "Exportando artículos..."
 
 #~ msgid "[Microblog] Reset Your Password"
-#~ msgstr "[Microblog] Nueva Contraseña"
+#~ msgstr "[Orached] Nueva Contraseña"
 
 #~ msgid "Congratulations, you are now a registered user!"
 #~ msgstr "¡Felicitaciones, ya eres un usuario registrado!"
@@ -398,4 +635,7 @@ msgstr "Exportando artículos..."
 
 #~ msgid "Explore"
 #~ msgstr "Explorar"
+
+#~ msgid "QA engineer, DevOps oriented"
+#~ msgstr ""
 

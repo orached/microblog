@@ -10,7 +10,6 @@
     </div>
     <div class="col-md-4">
         <div class="row content-section">
-            <h2>Search</h2>
             {% if g.search_form %}
             <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
                 <div class="form-group">
@@ -21,7 +20,7 @@
         </div>
         <br>
         <div class="row content-section">
-            <h2>Browse by category</h2>
+            <h2>{{ _('Browse by category') }}</h2>
             <ul class="list-group">
                 {% for category in categories %}
                 <a href="{{ url_for('posts.category', id=category.id) }}">
@@ -34,10 +33,10 @@
         </div>
         <br>
         <div class="row content-section">
-            <h2>More</h2>
+            <h2>{{ _('More') }}</h2>
             <ul class="list-group">
-                <li class="list-group-item">Announcements</li>
-                <li class="list-group-item">Calendars</li>
+                <li class="list-group-item">{{ _('Announcements') }}</li>
+                <li class="list-group-item">{{ _('Calendars') }}</li>
             </ul>
         </div>
     </div>

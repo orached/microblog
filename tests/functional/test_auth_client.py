@@ -33,7 +33,7 @@ def test_register(setUp, populate_db):
         assert response.status_code == 200
         assert b"A confirmation email has been sent to you by email." in response.data
         assert len(outbox) == 1
-        assert outbox[0].subject == "[Orached] Confirm you account"
+        assert outbox[0].subject == "[Orached] Confirm your account"
 
 
 def test_confirmation(setUp, populate_db, new_users):
