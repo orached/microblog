@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-01-10 18:45+0100\n"
+"POT-Creation-Date: 2020-01-11 20:07+0100\n"
 "PO-Revision-Date: 2017-09-29 23:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -115,11 +115,11 @@ msgstr "Nueva Contraseña"
 msgid "Your password has been reset."
 msgstr "Tu contraseña ha sido cambiada."
 
-#: app/main/forms.py:9 app/main/routes.py:48
+#: app/main/forms.py:9 app/main/routes.py:55
 msgid "Search"
 msgstr "Buscar"
 
-#: app/main/routes.py:32
+#: app/main/routes.py:39
 msgid "Index"
 msgstr "Índice"
 
@@ -191,7 +191,8 @@ msgid ""
 "Datasets construction, Test environment setup, Test execution, \n"
 "                    Bugs management, reporting."
 msgstr ""
-"Buen dominio de las acciones operativas en todos los niveles del ciclo de vida de Software Test :\n"
+"Buen dominio de las acciones operativas en todos los niveles del ciclo de"
+" vida de Software Test :\n"
 "                    Análisis de requerimientos, Planificación de prueba, "
 "Prueba de diseño, Construcción de conjuntos de datos, Configuración del "
 "entorno de prueba, Ejecución de pruebas, \n"
@@ -444,28 +445,36 @@ msgstr "Editar Artículo"
 msgid "Edit Profile"
 msgstr "Editar Perfil"
 
-#: app/templates/index.html:23
+#: app/templates/index.html:10
+msgid "All"
+msgstr "Todos"
+
+#: app/templates/index.html:13
+msgid "Followed"
+msgstr "Seguido"
+
+#: app/templates/index.html:33
 msgid "Browse by category"
 msgstr "Buscar por categoría"
 
-#: app/templates/index.html:36
+#: app/templates/index.html:46
 msgid "More"
 msgstr "Más"
 
-#: app/templates/index.html:38
+#: app/templates/index.html:48
 msgid "Announcements"
 msgstr "Anuncios"
 
-#: app/templates/index.html:39
+#: app/templates/index.html:49
 msgid "Calendars"
 msgstr "Calendarios"
 
-#: app/templates/index.html:50 app/templates/manage_post.html:24
+#: app/templates/index.html:60 app/templates/manage_post.html:24
 #: app/templates/user.html:37
 msgid "Newer posts"
 msgstr "Artículos siguientes"
 
-#: app/templates/index.html:55 app/templates/manage_post.html:29
+#: app/templates/index.html:65 app/templates/manage_post.html:29
 #: app/templates/user.html:42
 msgid "Older posts"
 msgstr "Artículos previos"
@@ -474,6 +483,14 @@ msgstr "Artículos previos"
 #, python-format
 msgid "Hi, %(username)s!"
 msgstr "¡Hola, %(username)s!"
+
+#: app/templates/manage_post.html:11
+msgid "Add new post:"
+msgstr "Añadir nuevo artículo"
+
+#: app/templates/manage_post.html:16
+msgid "Or edit your posts:"
+msgstr "O edita tus artículos"
 
 #: app/templates/messages.html:12
 msgid "Newer messages"

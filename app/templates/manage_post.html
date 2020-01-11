@@ -8,12 +8,12 @@
 
 {% block app_content %}
     <h1>{{ _('Hi, %(username)s!', username=current_user.username) }}</h1>
-    <h2>Add new post:</h2>
+    <h2>{{ _('Add new post:') }}</h2>
     {% if form %}
     {{ wtf.quick_form(form) }}
     <br>
     {% endif %}
-    <h2>Or edit your posts:</h2>
+    <h2>{{ _('Or edit your posts:') }}</h2>
     {% for post in posts %}
         {% include '_post.html' %}
     {% endfor %}

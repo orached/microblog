@@ -4,9 +4,19 @@
 {% block app_content %}
 <main role="main" class="container">
     <div class="col-md-8">
-    {% for post in posts %}
-        {% include '_post.html' %}
-    {% endfor %}
+        {% if current_user.is_authenticated %}
+        <ul class="nav nav-tabs">
+            <li{% if not show_followed %} class="active"{% endif %}>
+                <a href="{{ url_for('main.show_all') }}">{{ _('All') }}</a>
+            </li>
+            <li{% if show_followed %} class="active"{% endif %}>
+                <a href="{{ url_for('main.show_followed') }}">{{ _('Followed') }}</a>
+            </li>
+        </ul>
+        {% endif %}
+        {% for post in posts %}
+            {% include '_post.html' %}
+        {% endfor %}
     </div>
     <div class="col-md-4">
         <div class="row content-section">

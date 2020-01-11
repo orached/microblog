@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-01-10 18:45+0100\n"
+"POT-Creation-Date: 2020-01-11 20:07+0100\n"
 "PO-Revision-Date: 2020-01-02 11:21+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -111,11 +111,11 @@ msgstr "Réinitialiser le mot de passe"
 msgid "Your password has been reset."
 msgstr "Votre mot de passe a été réinitialisé."
 
-#: app/main/forms.py:9 app/main/routes.py:48
+#: app/main/forms.py:9 app/main/routes.py:55
 msgid "Search"
 msgstr "Rechercher"
 
-#: app/main/routes.py:32
+#: app/main/routes.py:39
 msgid "Index"
 msgstr "Accueil"
 
@@ -440,28 +440,36 @@ msgstr "Modifier l'article"
 msgid "Edit Profile"
 msgstr "Modifier le profil"
 
-#: app/templates/index.html:23
+#: app/templates/index.html:10
+msgid "All"
+msgstr "Tout"
+
+#: app/templates/index.html:13
+msgid "Followed"
+msgstr "Suivi"
+
+#: app/templates/index.html:33
 msgid "Browse by category"
 msgstr "Parcourir par catégorie"
 
-#: app/templates/index.html:36
+#: app/templates/index.html:46
 msgid "More"
 msgstr "Plus"
 
-#: app/templates/index.html:38
+#: app/templates/index.html:48
 msgid "Announcements"
 msgstr "Annonces"
 
-#: app/templates/index.html:39
+#: app/templates/index.html:49
 msgid "Calendars"
 msgstr "Calendriers"
 
-#: app/templates/index.html:50 app/templates/manage_post.html:24
+#: app/templates/index.html:60 app/templates/manage_post.html:24
 #: app/templates/user.html:37
 msgid "Newer posts"
 msgstr "Plus récents"
 
-#: app/templates/index.html:55 app/templates/manage_post.html:29
+#: app/templates/index.html:65 app/templates/manage_post.html:29
 #: app/templates/user.html:42
 msgid "Older posts"
 msgstr "Plus anciens"
@@ -470,6 +478,14 @@ msgstr "Plus anciens"
 #, python-format
 msgid "Hi, %(username)s!"
 msgstr "Bonjour %(username)s, "
+
+#: app/templates/manage_post.html:11
+msgid "Add new post:"
+msgstr "Ajouter un nouvel article :"
+
+#: app/templates/manage_post.html:16
+msgid "Or edit your posts:"
+msgstr "Ou modifier vos anciens articles"
 
 #: app/templates/messages.html:12
 msgid "Newer messages"

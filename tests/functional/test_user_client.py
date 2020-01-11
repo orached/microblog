@@ -144,7 +144,7 @@ def test_send_message(setUp, populate_db):
         'password': 'dog'
     }, follow_redirects=True)
     response = setUp.get('/notifications')
-    assert b"\"data\":1" in response.data
+    assert b"\"data\": 1" in response.data
     response = setUp.get('/messages')
     assert b"john" in response.data
     assert b"Hi susan! I like your posts." in response.data
