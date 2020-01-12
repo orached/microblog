@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-01-11 20:07+0100\n"
+"POT-Creation-Date: 2020-01-12 23:51+0100\n"
 "PO-Revision-Date: 2020-01-02 11:21+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -148,6 +148,14 @@ msgstr "Votre article a été publié"
 msgid "Posts"
 msgstr "Articles"
 
+#: app/posts/routes.py:59
+msgid "Your comment has been published."
+msgstr ""
+
+#: app/posts/routes.py:80
+msgid "The post has been updated."
+msgstr "L'article a été mis à jour"
+
 #: app/templates/_comment.html:16
 #, python-format
 msgid "%(username)s said %(when)s"
@@ -207,9 +215,21 @@ msgstr "12 Mai 1989"
 msgid "BIRTH"
 msgstr "NAISSANCE"
 
+#: app/templates/about.html:42
+msgid "MOROCCO"
+msgstr ""
+
 #: app/templates/about.html:43
 msgid "NATIONALITY"
 msgstr "NATIONALITE"
+
+#: app/templates/about.html:49
+msgid "PROFESSIONAL"
+msgstr "Professionnel"
+
+#: app/templates/about.html:50
+msgid "NATIVE"
+msgstr "Bilingue"
 
 #: app/templates/about.html:52
 msgid "LANGUAGE"

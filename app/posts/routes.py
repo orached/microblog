@@ -56,7 +56,7 @@ def post(id):
                         author=current_user, language=language)
         db.session.add(comment)
         db.session.commit()
-        flash('Your comment has been published.')
+        flash(_('Your comment has been published.'))
         return redirect(url_for('posts.post', id=post.id))
     comments = post.comments.order_by(Comment.timestamp.asc())
     return render_template('post.html', post=post, form=form, comments=comments)
@@ -77,7 +77,7 @@ def editpost(id):
         post.body_html = form.post.data
         db.session.add(post)
         db.session.commit()
-        flash('The post has been updated.')
+        flash(_('The post has been updated.'))
         return redirect(url_for('posts.post', id=post.id))
     form.title.data = post.title
     form.post.data = post.body_html
