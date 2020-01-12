@@ -217,7 +217,7 @@ msgstr "NAISSANCE"
 
 #: app/templates/about.html:42
 msgid "MOROCCO"
-msgstr ""
+msgstr "MAROC"
 
 #: app/templates/about.html:43
 msgid "NATIONALITY"
@@ -225,11 +225,11 @@ msgstr "NATIONALITE"
 
 #: app/templates/about.html:49
 msgid "PROFESSIONAL"
-msgstr "Professionnel"
+msgstr "PROFESSIONNEL"
 
 #: app/templates/about.html:50
 msgid "NATIVE"
-msgstr "Bilingue"
+msgstr "BILINGUE"
 
 #: app/templates/about.html:52
 msgid "LANGUAGE"
