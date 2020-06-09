@@ -100,7 +100,7 @@ def setUp_selenium():
     options = webdriver.ChromeOptions()
     options.add_argument('headless')
     try:
-        driver = webdriver.Chrome(chrome_options=options, executable_path=path)
+        driver = webdriver.Chrome(options=options, executable_path=path)
     except:
         pass
     
